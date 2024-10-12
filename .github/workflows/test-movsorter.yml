@@ -23,6 +23,9 @@ jobs:
         echo > "script.bat"
         echo > "script.cmd"
 
+    - name: Set execute permissions for MovSorter.bat
+      run: chmod +x MovSorter.bat
+
     - name: Run MovSorter.bat
       run: |
         cd test
