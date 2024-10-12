@@ -29,6 +29,7 @@ jobs:
         ..\MovSorter.bat
 
     - name: Verify results
+      shell: cmd
       run: |
         cd test
         if not exist "movie1\movie1.mkv" (echo Test 1 failed & exit 1)
