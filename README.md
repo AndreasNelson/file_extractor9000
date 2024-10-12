@@ -66,5 +66,3 @@ The `.github/workflows/test.yml` workflow tests the `EpSorter.bat` script by set
 ### Update Downloads Zip
 
 The `.github/workflows/update-downloads-zip.yml` workflow updates the `downloads.zip` file whenever changes are made to the `downloads` directory.
-
-
