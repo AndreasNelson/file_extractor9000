@@ -18,13 +18,23 @@ EpSorter.bat is a batch script designed to organize `.mkv` files into season-spe
 
 Given the following directory structure:
 
-root/ ├── Show S01/ │ ├── Episode S01E01.mkv │ ├── Episode S01E02.mkv ├── Show S02/ │ ├── Episode S02E01.mkv │ ├── Episode S02E02.mkv
+root/
+├── Episode S01E01 /
+│   ├── Episode S01E01.mkv
+├── Episode S01E02/
+│   ├── Episode S01E02.mkv
 
 After running `EpSorter.bat`, the directory structure will be:
 
-root/ ├── Season 01/ │ ├── Episode S01E01.mkv │ ├── Episode S01E02.mkv ├── Season 02/ │ ├── Episode S02E01.mkv │ ├── Episode S02E02.mkv
+root/
+├── Season 01/
+│   ├── Episode S01E01.mkv
+│   ├── Episode S01E02.mkv
+├── Season 02/
+│   ├── Episode S02E01.mkv
+│   ├── Episode S02E02.mkv
 
-Notes
+### Notes
 Ensure that the filenames follow the pattern Show.SXXEXX.*.mkv where SXX represents the season number.
 The script assumes that the season number is always in the format SXX and is located after the first period in the filename.
 License
