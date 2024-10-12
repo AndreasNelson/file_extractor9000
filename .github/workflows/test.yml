@@ -1,0 +1,60 @@
+name: Test EpSorter.bat
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up test environment
+      run: |
+        mkdir test_env
+        cd test_env
+        mkdir "Show S01"
+        mkdir "Show S02"
+        echo Dummy content > "Show S01\Episode S01E01.mkv"
+        echo Dummy content > "Show S01\Episode S01E02.mkv"
+        echo Dummy content > "Show S02\Episode S02E01.mkv"
+        echo Dummy content > "Show S02\Episode S02E02.mkv"
+
+    - name: Run EpSorter.bat
+      run: |
+        call EpSorter.bat
+      shell: cmd
+
+    - name: Verify results
+      run: |
+        if exist "Season 01\Episode S01E01.mkv" (
+            echo Test 1 passed
+        ) else (
+            echo Test 1 failed
+            exit /b 1
+        )
+        if exist "Season 01\Episode S01E02.mkv" (
+            echo Test 2 passed
+        ) else (
+            echo Test 2 failed
+            exit /b 1
+        )
+        if exist "Season 02\Episode S02E01.mkv" (
+            echo Test 3 passed
+        ) else (
+            echo Test 3 failed
+            exit /b 1
+        )
+        if exist "Season 02\Episode S02E02.mkv" (
+            echo Test 4 passed
+        ) else (
+            echo Test 4 failed
+            exit /b 1
+        )
+      shell: cmd
+
+    - name: Clean up test environment
+      run: |
+        rd /s /q test_env
+      shell: cmd
