@@ -8,13 +8,18 @@ for %%f in (*.*) do (
         REM Get the base name of the file (without extension)
         set "filename=%%~nf"
         
+        REM Remove additional extensions (e.g., .en.srt -> .srt)
+        for /f "tokens=1 delims=." %%a in ("!filename!") do (
+            set "basename=%%a"
+        )
+        
         REM Create a directory with the base name if it doesn't exist
-        if not exist "!filename!" (
-            mkdir "!filename!"
+        if not exist "!basename!" (
+            mkdir "!basename!"
         )
         
         REM Move the file into the corresponding directory
-        move "%%f" "!filename!\"
+        move "%%f" "!basename!\"
     )
 )
 
