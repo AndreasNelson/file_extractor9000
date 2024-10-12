@@ -17,17 +17,17 @@ for /d /r %%d in (*) do (
 :: Step 3 and 4: Create a new folder for each season and sort the files
 for %%f in (*.mkv) do (
   set "file=%%f"
-  
+
   :: Extract the season number from the filename
   for /f "tokens=2 delims=S" %%a in ("!file!") do (
     set "season=%%a"
     set "season=!season:~0,2!"
   )
-  
+
   :: Create the season directory if it doesn't exist
   set "season_dir=Season !season!"
   if not exist "!season_dir!" mkdir "!season_dir!"
-  
+
   :: Move the file into the season directory
   move "!file!" "!season_dir!"
 )
