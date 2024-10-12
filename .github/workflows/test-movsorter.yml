@@ -14,14 +14,14 @@ jobs:
       run: |
         mkdir test
         cd test
-        echo. > "movie1.mkv"
-        echo. > "movie1.mp4"
-        echo. > "movie1.en.srt"
-        echo. > "movie2.mkv"
-        echo. > "movie2.mp4"
-        echo. > "movie2.en.srt"
-        echo. > "script.bat"
-        echo. > "script.cmd"
+        New-Item -ItemType File -Name "movie1.mkv"
+        New-Item -ItemType File -Name "movie1.mp4"
+        New-Item -ItemType File -Name "movie1.en.srt"
+        New-Item -ItemType File -Name "movie2.mkv"
+        New-Item -ItemType File -Name "movie2.mp4"
+        New-Item -ItemType File -Name "movie2.en.srt"
+        New-Item -ItemType File -Name "script.bat"
+        New-Item -ItemType File -Name "script.cmd"
 
     - name: Run MovSorter.bat
       run: |
