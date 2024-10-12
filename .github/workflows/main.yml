@@ -1,0 +1,42 @@
+name: Test MovSorter
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up test environment
+      run: |
+        mkdir test
+        cd test
+        echo > "movie1.mkv"
+        echo > "movie1.mp4"
+        echo > "movie1.en.srt"
+        echo > "movie2.mkv"
+        echo > "movie2.mp4"
+        echo > "movie2.en.srt"
+        echo > "script.bat"
+        echo > "script.cmd"
+
+    - name: Run MovSorter.bat
+      run: |
+        cd test
+        ../MovSorter.bat
+
+    - name: Verify results
+      run: |
+        cd test
+        if not exist "movie1/movie1.mkv" (echo Test 1 failed & exit 1)
+        if not exist "movie1/movie1.mp4" (echo Test 2 failed & exit 1)
+        if not exist "movie1/movie1.en.srt" (echo Test 3 failed & exit 1)
+        if not exist "movie2/movie2.mkv" (echo Test 4 failed & exit 1)
+        if not exist "movie2/movie2.mp4" (echo Test 5 failed & exit 1)
+        if not exist "movie2/movie2.en.srt" (echo Test 6 failed & exit 1)
+        if exist "script.bat" (echo Test 7 failed & exit 1)
+        if exist "script.cmd" (echo Test 8 failed & exit 1)
+        echo All tests passed
