@@ -4,8 +4,8 @@ setlocal enabledelayedexpansion
 :: Get the root directory (current directory)
 set root_dir=%cd%
 
-:: Step 1: Move all files from subfolders to the root directory
-for /r %%f in (*.mkv) do (
+:: Step 1: Move all .mkv and .mp4 files from subfolders to the root directory
+for /r %%f in (*.mkv *.mp4) do (
   move "%%f" "%root_dir%"
 )
 
@@ -15,7 +15,7 @@ for /d /r %%d in (*) do (
 )
 
 :: Step 3 and 4: Create a new folder for each season and sort the files
-for %%f in (*.mkv) do (
+for %%f in (*.mkv *.mp4) do (
   set "file=%%f"
 
   :: Extract the season number from the filename
