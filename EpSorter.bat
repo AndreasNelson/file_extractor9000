@@ -18,24 +18,21 @@ for /d /r %%d in (*) do (
 for %%f in (*.mkv *.mp4) do (
   set "file=%%f"
 
-  :: Temporarily disable delayed expansion to handle exclamation marks in filenames
-  setlocal disabledelayedexpansion
-
   :: Extract the season number from the filename
-  for /f "tokens=2 delims=S" %%a in ("%%f") do (
+  setlocal disabledelayedexpansion
+  for /f "tokens=2 delims=S" %%a in ("%%~nf") do (
+    endlocal
     set "season=%%a"
     set "season=!season:~0,2!"
+    setlocal enabledelayedexpansion
   )
 
-  :: Re-enable delayed expansion
-  endlocal & set "season=%season%"
-
   :: Create the season directory if it doesn't exist
-  set "season_dir=Season %season%"
-  if not exist "%season_dir%" mkdir "%season_dir%"
+  set "season_dir=Season !season!"
+  if not exist "!season_dir!" mkdir "!season_dir!"
 
   :: Move the file into the season directory
-  move "%%f" "%season_dir%"
+  move "%%f" "!season_dir!\"
 )
 
 endlocal
