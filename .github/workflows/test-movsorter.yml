@@ -32,13 +32,16 @@ jobs:
       shell: cmd
       run: |
         cd test
-        dir /s
+        dir
         if not exist "movie1\movie1.mkv" (echo Test 1 failed & exit 1)
         if not exist "movie1\movie1.mp4" (echo Test 2 failed & exit 1)
         if not exist "movie1\movie1.en.srt" (echo Test 3 failed & exit 1)
         if not exist "movie2\movie2.mkv" (echo Test 4 failed & exit 1)
         if not exist "movie2\movie2.mp4" (echo Test 5 failed & exit 1)
         if not exist "movie2\movie2.en.srt" (echo Test 6 failed & exit 1)
-        if exist "script.bat" (echo Test 7 failed & exit 1)
-        if exist "script.cmd" (echo Test 8 failed & exit 1)
+
+        rem Check if script.bat and script.cmd are still present in the root directory
+        if not exist "script.bat" (echo Test 7 failed & exit 1)
+        if not exist "script.cmd" (echo Test 8 failed & exit 1)
+
         echo All tests passed
