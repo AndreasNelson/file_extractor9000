@@ -8,6 +8,10 @@ This repository contains several batch scripts designed to help organize and man
 2. `EpCleaner.bat`: Cleans up episode files by removing unwanted files and directories.
 3. `MovSorter.bat`: Organizes movie files into directories based on their filenames.
 
+## Download
+
+[Download All Batch Files (ZIP)](https://github.com/AndreasNelson/file_extractor9000/raw/main/batch_files.zip)
+
 ## Scripts
 
 ### EpSorter.bat
@@ -63,6 +67,4 @@ The `.github/workflows/test.yml` workflow tests the `EpSorter.bat` script by set
 
 The `.github/workflows/update-downloads-zip.yml` workflow updates the `downloads.zip` file whenever changes are made to the `downloads` directory.
 
-## Download
 
-[Download All Batch Files (ZIP)](https://github.com/AndreasNelson/file_extractor9000/raw/main/batch_files.zip)
