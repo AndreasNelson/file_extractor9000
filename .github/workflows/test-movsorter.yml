@@ -32,7 +32,7 @@ jobs:
       shell: cmd
       run: |
         cd test
-        dir
+        dir /s
         if not exist "movie1\movie1.mkv" (echo Test 1 failed & exit 1)
         if not exist "movie1\movie1.mp4" (echo Test 2 failed & exit 1)
         if not exist "movie1\movie1.en.srt" (echo Test 3 failed & exit 1)
