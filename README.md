@@ -5,8 +5,7 @@
 This repository contains several batch scripts designed to help organize and manage your media files. The scripts included are:
 
 1. `EpSorter.bat`: Organizes `.mkv` and `.mp4` files into season-specific directories.
-2. `EpCleaner.bat`: Cleans up episode files by removing unwanted files and directories.
-3. `MovSorter.bat`: Organizes movie files into directories based on their filenames.
+2. `MovSorter.bat`: Organizes movie files into directories based on their filenames.
 
 ## Download
 
@@ -27,19 +26,6 @@ This repository contains several batch scripts designed to help organize and man
 
 1. Place the `EpSorter.bat` file in the root directory where your episode files and subdirectories are located.
 2. Double-click the `EpSorter.bat` file or run it from the command prompt.
-
-### EpCleaner.bat
-
-`EpCleaner.bat` is a batch script designed to clean up episode files by removing unwanted files and directories. The script performs the following steps:
-
-1. Deletes all `.txt` and `.nfo` files.
-2. Removes all empty subdirectories.
-3. Deletes all `.jpg` and `.png` files.
-
-#### Usage
-
-1. Place the `EpCleaner.bat` file in the root directory where your episode files and subdirectories are located.
-2. Double-click the `EpCleaner.bat` file or run it from the command prompt.
 
 ### MovSorter.bat
 
