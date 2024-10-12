@@ -1,9 +1,9 @@
-name: Update Downloads Zip
+name: Update Batch Files Zip
 
 on:
   push:
     paths:
-      - 'downloads/**'
+      - '*.bat'
 
 jobs:
   update-zip:
@@ -13,22 +13,22 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Remove old downloads.zip
+    - name: Remove old batch_files.zip
       run: |
-        if [ -f downloads.zip ]; then
-          rm downloads.zip
+        if [ -f batch_files.zip ]; then
+          rm batch_files.zip
         fi
 
-    - name: Create new downloads.zip
+    - name: Create new batch_files.zip
       run: |
-        zip -r downloads.zip downloads/
+        zip batch_files.zip *.bat
 
-    - name: Commit and push new downloads.zip
+    - name: Commit and push new batch_files.zip
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-        git add downloads.zip
-        git commit -m 'Update downloads.zip'
+        git add batch_files.zip
+        git commit -m 'Update batch_files.zip'
         git push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
